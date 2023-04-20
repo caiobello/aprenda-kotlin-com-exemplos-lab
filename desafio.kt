@@ -5,7 +5,7 @@
 enum class Nivel { INICIANTE, MEDIO, AVANCADO }
 
 // Classe que representa um usuario com seu nome
-class Usuario(val nome: String)
+class Usuario(val nome: String, val DDD: Int, val telefone: Int, val Email: String)
 
 // Data class que representa um conteudo educacional, contendo nome e duracao
 data class ConteudoEducacional(val nome: String, val duracao: Int = 60)
@@ -40,8 +40,8 @@ data class Formacao(
 }
 
 fun main() {
-    val usuario1 = Usuario("Caio Bello")
-    val usuario2 = Usuario("Julia Maria")
+    val usuario1 = Usuario("Caio Bello", 48, 899784897, "desenvolvedorcaio@gmail.com")
+    val usuario2 = Usuario("Julia Maria", 11, 878945687, "juliaficticio@uol.com")
 
     //objetos do tipo ConteudoEducacional para a formacao1, "Primeiros Passos com SQL"
     val conteudo1 = ConteudoEducacional("MySQL - Trabalhando com suas Primeiras Tabelas", 120)
@@ -65,13 +65,16 @@ fun main() {
     formacao1.matricular(usuario1) // Tentando matricular o mesmo usuario duas vezes
     formacao2.matricular(usuario2) // Matricula o usuario2 na formacao2
 
-    println(formacao2) // Imprime a formacao2, que inclui os inscritos
+    println("Informacoes da formacao 1: $formacao1") //
+    println("Informacoes da formacao 2: $formacao2") // Imprime a formacao2, que inclui os inscritos
 
     formacao1.desmatricular(usuario2) // Desmatricula o usuario2 da formacao1
 
     formacao2.desmatricular(usuario1) // Tentativa de desmatricular o usuario1 da formacao2, que não esta matriculado
 
-    println("Formação de ${formacao1.nome}: ${formacao1.inscritos}") // Imprime o nome da formacao1 e o numero de inscritos na formacaoo1
+    formacao2.matricular(usuario1) // Matricula o usuario2 na formacao2
 
-    println("Formação de ${formacao2.nome}: ${formacao2.inscritos}") // Imprime o nome da formacao2 e o número de inscritos na formacao2
+    println("Formação de ${formacao1.nome}: ${formacao1.inscritos}") // Imprime o nome da formacao1 e os usuarios incristos na formacao1
+
+    println("Formação de ${formacao2.nome}: ${formacao2.inscritos}") // Imprime o nome da formacao1 e os usuarios incristos na formacao2
 }
